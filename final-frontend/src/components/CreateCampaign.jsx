@@ -27,7 +27,7 @@ export default function CreateCampaign({ customers, campaigns, setCampaigns }) {
   const [previewAudience, setPreviewAudience] = useState(null)
   const [showPreview, setShowPreview] = useState(false)
   const [prompt, setPrompt] = useState("")
-  const { allCustomers, allOrders,allCampaigns, setAllCampaigns} = useCrmStore();
+  const { allCampaigns, setAllCampaigns, backendUrl} = useCrmStore();
 
   const fieldOptions = [
     { value: "totalSpent", label: "Total Spent", type: "number" },
@@ -136,7 +136,7 @@ export default function CreateCampaign({ customers, campaigns, setCampaigns }) {
     const token = localStorage.getItem('token'); // token from backend
     console.log(rules);
     try {
-      const res = await axios.post('http://localhost:5000/api/v1/campaigns/preview',{rules:rules},{
+      const res = await axios.post(`${backendUrl}/api/v1/campaigns/preview`,{rules:rules},{
           headers: {
             Authorization: `Bearer ${token}`, // this hits the `protect` middleware
           },
@@ -162,7 +162,7 @@ export default function CreateCampaign({ customers, campaigns, setCampaigns }) {
 
       try {
 
-        const res = await axios.post('http://localhost:5000/api/v1/campaigns/ai', {userInput : prompt}, {
+        const res = await axios.post(`${backendUrl}/api/v1/campaigns/ai`, {userInput : prompt}, {
           headers: {
             Authorization: `Bearer ${token}`, // this hits the `protect` middleware
           },
@@ -204,7 +204,7 @@ export default function CreateCampaign({ customers, campaigns, setCampaigns }) {
 
     try {
       const token = localStorage.getItem('token'); // token from backend
-      const res = await axios.post('http://localhost:5000/api/v1/CAMPAIGNS/create', {...newCampaign},{
+      const res = await axios.post(`${backendUrl}/api/v1/CAMPAIGNS/create`, {...newCampaign},{
           headers: {
             Authorization: `Bearer ${token}`, // this hits the `protect` middleware
           },

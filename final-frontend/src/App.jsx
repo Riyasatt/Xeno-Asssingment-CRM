@@ -23,7 +23,7 @@ export default function App() {
   const [loading, setLoading] = useState(true)
 
 
-  const { setAllCustomers, setAllOrders, setAllCampaigns} = useCrmStore();
+  const { setAllCustomers, setAllOrders, setAllCampaigns, backendUrl} = useCrmStore();
 
   useEffect(() => {
     const token = localStorage.getItem("token")
@@ -51,21 +51,21 @@ export default function App() {
 
       try {
         setLoading(true)
-        const res = await axios.get('http://localhost:5000/api/v1/customers/all', {
+        const res = await axios.get(`${backendUrl}/api/v1/customers/all`, {
           headers: {
             Authorization: `Bearer ${token}`, // this hits the `protect` middleware
           },
         });
         setAllCustomers(res.data);
 
-        const resOrders = await axios.get('http://localhost:5000/api/v1/orders/all', {
+        const resOrders = await axios.get(`${backendUrl}/api/v1/orders/all`, {
           headers: {
             Authorization: `Bearer ${token}`, // this hits the `protect` middleware
           },
         });
         setAllOrders(resOrders.data.data);
 
-        const resCampaign = await axios.get('http://localhost:5000/api/v1/campaignHistory/all?includeCustomers=true', {
+        const resCampaign = await axios.get(`${backendUrl}/api/v1/campaignHistory/all?includeCustomers=true`, {
           headers: {
             Authorization: `Bearer ${token}`, // this hits the `protect` middleware
           },
@@ -94,7 +94,7 @@ export default function App() {
 
     try {
       // Send raw Google token to backend
-      const res = await axios.post("http://localhost:5000/api/v1/auth/google", { token })
+      const res = await axios.post(`${backendUrl}/api/v1/auth/google`, { token })
 
       console.log("Auth RES",res);
 

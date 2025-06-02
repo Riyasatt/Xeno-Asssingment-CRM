@@ -15,7 +15,7 @@ export default function CustomerUpload() {
     visits: "",
     lastOrderDate: "",
   })
-   const {allCustomers, setAllCustomers} = useCrmStore()
+   const {allCustomers, setAllCustomers, backendUrl} = useCrmStore()
 
   const handleSubmit = async(e) => {
     e.preventDefault()
@@ -32,7 +32,7 @@ export default function CustomerUpload() {
 
     try {
       const token = localStorage.getItem('token'); // token from backend
-      const res = await axios.post('http://localhost:5000/api/v1/customers/create', {...formData},{
+      const res = await axios.post(`${backendUrl}/api/v1/customers/create`, {...formData},{
           headers: {
             Authorization: `Bearer ${token}`, // this hits the `protect` middleware
           },

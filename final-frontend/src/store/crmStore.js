@@ -1,6 +1,7 @@
 import { create } from 'zustand'
 
 const useCrmStore = create((set) => ({
+      backendUrl : "https://xeno-asssingment-crm.onrender.com",
       allCustomers : [],
       setAllCustomers:(customers) => {
             set({
