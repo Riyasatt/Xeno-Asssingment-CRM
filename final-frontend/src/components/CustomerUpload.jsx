@@ -65,15 +65,13 @@ export default function CustomerUpload() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-3xl font-bold text-gray-900">Customer Management</h1>
-        <p className="text-gray-600">Add and manage your customer database</p>
+        <h1 className="text-3xl font-bold text-gray-100">Customer Management</h1>
       </div>
 
       {/* Add Customer Form */}
-      <Card>
+      <Card className="bg-[#1a1a1d]  border-gray-500 text-white">
         <CardHeader>
           <CardTitle>Add New Customer</CardTitle>
-          <CardDescription>Enter customer details to add them to your database</CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -128,7 +126,7 @@ export default function CustomerUpload() {
                 />
               </div>
             </div>
-            <Button type="submit" className="w-full md:w-auto">
+            <Button type="submit" className="w-full md:w-auto text-black bg-white">
               Add Customer
             </Button>
           </form>
@@ -136,21 +134,20 @@ export default function CustomerUpload() {
       </Card>
 
       {/* Customer List */}
-      <Card>
+      <Card  className="bg-[#1a1a1d]  border-gray-500 text-white">
         <CardHeader>
           <CardTitle>Customer List</CardTitle>
-          <CardDescription>All customers in your database</CardDescription>
         </CardHeader>
         <CardContent>
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>ID</TableHead>
-                <TableHead>Name</TableHead>
-                <TableHead>Email</TableHead>
-                <TableHead>Total Spent</TableHead>
-                <TableHead>Visits</TableHead>
-                <TableHead>Last Order</TableHead>
+          <Table >
+            <TableHeader className="bg-white/10">
+              <TableRow >
+                <TableHead  className="text-white">ID</TableHead>
+                <TableHead  className="text-white">Name</TableHead>
+                <TableHead  className="text-white">Email</TableHead>
+                <TableHead  className="text-white">Total Spent</TableHead>
+                <TableHead  className="text-white"> Visits</TableHead>
+                <TableHead  className="text-white">Last Order</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>

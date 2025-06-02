@@ -119,24 +119,34 @@ export default function App() {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-gray-100">
-        <p className="text-gray-600 text-lg">Loading...</p>
+      <div className="flex items-center justify-center min-h-screen bg-[#1a1a1d]">
+        <p className="text-gray-200 text-lg">Loading...</p>
       </div>
     )
   }
 
   if (!isLoggedIn) {
     return (
-      <GoogleOAuthProvider clientId="263087723265-kff3fqduj3s2khgpr3nee4jvuagkv2os.apps.googleusercontent.com">
-        <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50 p-4">
-          <h1 className="mb-6 text-3xl font-bold">Welcome, Please Login</h1>
-          <GoogleLogin
-            onSuccess={handleLogin}
-            onError={() => alert("Login Failed")}
-            useOneTap
-          />
+     <GoogleOAuthProvider clientId="263087723265-kff3fqduj3s2khgpr3nee4jvuagkv2os.apps.googleusercontent.com">
+      <div className="flex flex-col items-center justify-center min-h-screen  bg-black px-4 transition-colors duration-300">
+        <div className="w-full max-w-md bg-gray-800 dark:bg-gray-800 rounded-xl shadow-lg p-8 space-y-6">
+          <h1 className="text-3xl font-bold text-white text-center">Welcome 👋</h1>
+          <p className="text-center text-gray-200">
+            Please sign in to continue
+          </p>
+          <div className="flex justify-center">
+            <GoogleLogin
+              onSuccess={handleLogin}
+              onError={() => alert("Login Failed")}
+              useOneTap
+              shape="pill"
+              size="large"
+              width="100%"
+            />
+          </div>
         </div>
-      </GoogleOAuthProvider>
+      </div>
+    </GoogleOAuthProvider>
     )
   }
 

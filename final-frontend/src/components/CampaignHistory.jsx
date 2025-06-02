@@ -122,7 +122,7 @@ export default function CampaignHistory() {
     return (
       <div className="space-y-8">
         <div className="flex items-center gap-4">
-          <Button variant="ghost" onClick={handleBack}>
+          <Button variant="ghost" className="border border-white/30" onClick={handleBack}>
             <ArrowLeft className="h-4 w-4 mr-2" />
             Back to Campaigns
           </Button>
@@ -134,7 +134,7 @@ export default function CampaignHistory() {
           </div>
         </div>
 
-        <Card>
+        <Card className="bg-[#1a1a1d]  border-gray-500 text-white">
           <CardHeader>
             <CardTitle>Campaign Summary</CardTitle>
           </CardHeader>
@@ -162,7 +162,7 @@ export default function CampaignHistory() {
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="bg-[#1a1a1d]  border-gray-500 text-white">
           <CardHeader>
             <CardTitle>Delivery Details</CardTitle>
             <CardDescription>
@@ -171,12 +171,12 @@ export default function CampaignHistory() {
           </CardHeader>
           <CardContent>
             <Table>
-              <TableHeader>
+              <TableHeader className="bg-white/10">
                 <TableRow>
-                  <TableHead>User ID</TableHead>
-                  <TableHead>Message</TableHead>
-                  <TableHead>Status</TableHead>
-                  <TableHead>Sent At</TableHead>
+                  <TableHead className="text-white">User ID</TableHead>
+                  <TableHead className="text-white">Message</TableHead>
+                  <TableHead className="text-white">Status</TableHead>
+                  <TableHead className="text-white">Sent At</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -210,58 +210,55 @@ export default function CampaignHistory() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-3xl font-bold">Campaign History</h1>
-        <p className="text-muted-foreground">
-          Analyze past campaigns and view delivery logs
-        </p>
+        <h1 className="text-3xl font-bold">Campaign History</h1>  
       </div>
 
       {/* Metrics Summary */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-        <Card>
+        <Card className="bg-[#1a1a1d]  border-gray-500 text-white">
           <CardHeader className="pb-2">
             <CardTitle className="text-muted-foreground text-sm">
               Total Campaigns
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-2xl font-semibold">{allCampaigns.length}</p>
+            <p className="text-4xl font-semibold">{allCampaigns.length}</p>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="bg-[#1a1a1d]  border-gray-500 text-white">
           <CardHeader className="pb-2">
             <CardTitle className="text-muted-foreground text-sm">
               Total Sent
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-2xl font-semibold">{totalSent}</p>
+            <p className="text-4xl font-semibold">{totalSent}</p>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="bg-[#1a1a1d]  border-gray-500 text-white">
           <CardHeader className="pb-2">
             <CardTitle className="text-muted-foreground text-sm">
               Total Audience
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-2xl font-semibold">{totalAudience}</p>
+            <p className="text-4xl font-semibold">{totalAudience}</p>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="bg-[#1a1a1d]  border-gray-500 text-white">
           <CardHeader className="pb-2">
             <CardTitle className="text-muted-foreground text-sm">
               Avg. Success Rate
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-2xl font-semibold">{`${avgSuccess}`}%</p>
+            <p className="text-4xl font-semibold">{`${avgSuccess}`}%</p>
           </CardContent>
         </Card>
       </div>
 
       {/* Campaign Table */}
-      <Card>
+      <Card className="bg-[#1a1a1d]  border-gray-500 text-white">
         <CardHeader>
           <CardTitle>All Campaigns</CardTitle>
           <CardDescription>
@@ -270,17 +267,17 @@ export default function CampaignHistory() {
         </CardHeader>
         <CardContent>
           <Table>
-            <TableHeader>
+            <TableHeader className="bg-white/10">
               <TableRow>
-                <TableHead>Name</TableHead>
-                <TableHead>Segment Rules</TableHead>
-                <TableHead>Audience</TableHead>
-                <TableHead>Sent</TableHead>
-                <TableHead>Failed</TableHead>
-                <TableHead>Success</TableHead>
-                <TableHead>Status</TableHead>
-                <TableHead>Created</TableHead>
-                <TableHead>Actions</TableHead>
+                <TableHead className="text-white">Name</TableHead>
+                <TableHead className="text-white">Segment Rules</TableHead>
+                <TableHead className="text-white">Audience</TableHead>
+                <TableHead className="text-white">Sent</TableHead>
+                <TableHead className="text-white">Failed</TableHead>
+                <TableHead className="text-white">Success</TableHead>
+                <TableHead className="text-white">Status</TableHead>
+                <TableHead className="text-white">Created</TableHead>
+                <TableHead className="text-white">Actions</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -299,6 +296,7 @@ export default function CampaignHistory() {
                   <TableCell>
                     <Button
                       variant="outline"
+                      className="text-black"
                       size="sm"
                       onClick={() => handleViewLogs(campaign)}
                       disabled={campaign.status === "draft"}

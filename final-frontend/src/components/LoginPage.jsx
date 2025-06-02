@@ -1,18 +1,28 @@
 import { Button } from "../components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/ui/card"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "../components/ui/card"
 
 export default function LoginPage({ onLogin }) {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
-      <Card className="w-full max-w-md shadow-md">
+    <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+      <Card className="w-full max-w-sm shadow-xl dark:bg-gray-800 dark:border-gray-700">
         <CardHeader className="text-center">
-          <CardTitle className="text-2xl font-bold">Welcome Back</CardTitle>
-          <CardDescription>Sign in to your customer engagement platform</CardDescription>
+          <CardTitle className="text-3xl font-semibold text-gray-900 dark:text-white">
+            Welcome Back
+          </CardTitle>
+          <CardDescription className="text-gray-500 dark:text-gray-300">
+            Sign in to continue to XENO CRM
+          </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
           <Button
             onClick={onLogin}
-            className="w-full flex items-center justify-center gap-2"
+            className="w-full flex items-center justify-center gap-2 border border-gray-300 dark:border-gray-600 dark:text-white dark:hover:bg-gray-700"
             variant="outline"
           >
             <svg className="w-5 h-5" viewBox="0 0 24 24" aria-hidden="true">

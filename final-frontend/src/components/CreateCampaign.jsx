@@ -215,6 +215,8 @@ export default function CreateCampaign({ customers, campaigns, setCampaigns }) {
       console.error('Error', error.response?.data || error.message);
     }
 
+    console.log(allCampaigns);
+
     setCampaignName("")
     setCampaignMessage("")
     setRules([{ id: 1, field: "", operator: "", value: "", logic: "AND" }])
@@ -237,13 +239,12 @@ export default function CreateCampaign({ customers, campaigns, setCampaigns }) {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-3xl font-bold text-gray-900">Create Campaign</h1>
-        <p className="text-gray-600">Design targeted campaigns for your customers</p>
+        <h1 className="text-3xl font-bold text-gray-100">Create Campaign</h1>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Campaign Details */}
-        <Card>
+        <Card className="bg-[#1a1a1d]  border-gray-500 text-white">
           <CardHeader>
             <CardTitle>Campaign Details</CardTitle>
             <CardDescription>Set up your campaign name and message</CardDescription>
@@ -274,19 +275,18 @@ export default function CreateCampaign({ customers, campaigns, setCampaigns }) {
         </Card>
 
         {/* Segment Builder */}
-        <Card>
+        <Card className="bg-[#1a1a1d]  border-gray-500 text-white">
           <CardHeader>
             <CardTitle>Segment Builder</CardTitle>
-            <CardDescription>Define rules to target specific customer segments</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="flex justify-between items-center">
               <h3 className="text-lg font-medium">Targeting Rules</h3>
             </div>
-            <div className="shadow-lg p-4 border mb-10">
+            <div className=" p-4 border rounded-xl   mb-10">
               <Input  onChange={(e) => setPrompt(e.target.value)}/>
-                <Button type="button"  onClick={generateAIRules} className="flex items-center gap-2 mt-5">
-                    <Sparkles className="h-4 w-4" />
+                <Button type="button"  onClick={generateAIRules} className="flex items-center gap-2 mt-5 bg-white text-black">
+                   
                     Generate Rules from AI
                   </Button>
             </div>
@@ -365,15 +365,14 @@ export default function CreateCampaign({ customers, campaigns, setCampaigns }) {
             ))}
 
             <div className="flex gap-2">
-              <Button type="button" variant="outline" onClick={addRule} className="flex items-center gap-2">
+              <Button type="button"  onClick={addRule} className="flex items-center gap-2 text-black bg-white">
                 <Plus className="h-4 w-4" />
                 Add Rule
               </Button>
               <Button
                 type="button"
-                variant="outline"
                 onClick={previewAudienceHandler}
-                className="flex items-center gap-2"
+                className="flex items-center gap-2 border"
               >
                 <Eye className="h-4 w-4" />
                 Preview Audience
@@ -382,9 +381,9 @@ export default function CreateCampaign({ customers, campaigns, setCampaigns }) {
 
             {/* Rules Summary */}
             {rules.some((rule) => rule.field && rule.operator && rule.value) && (
-              <div className="p-3 bg-gray-50 rounded-lg">
-                <p className="text-sm font-medium text-gray-700">Rules Summary:</p>
-                <p className="text-sm text-gray-600">{formatRulesSummary(rules)}</p>
+              <div className="p-3 bg-[#1a1a1d]  border text-white rounded-lg">
+                <p className="text-sm font-medium ">Rules Summary:</p>
+                <p className="text-sm ">{formatRulesSummary(rules)}</p>
               </div>
             )}
           </CardContent>
@@ -392,24 +391,23 @@ export default function CreateCampaign({ customers, campaigns, setCampaigns }) {
 
         {/* Preview Audience */}
         {showPreview && previewAudience && (
-          <Card>
+          <Card className="bg-[#1a1a1d]  border-gray-500 text-white">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Users className="h-5 w-5" />
                 Audience Preview
               </CardTitle>
-              <CardDescription>{previewAudience.length} customers match your targeting rules</CardDescription>
             </CardHeader>
             <CardContent>
               {previewAudience.length > 0 ? (
                 <Table>
-                  <TableHeader>
+                  <TableHeader className="bg-white/10">
                     <TableRow>
-                      <TableHead>Customer ID</TableHead>
-                      <TableHead>Name</TableHead>
-                      <TableHead>Email</TableHead>
-                      <TableHead>Total Spent</TableHead>
-                      <TableHead>Visits</TableHead>
+                      <TableHead className="text-white">Customer ID</TableHead>
+                      <TableHead className="text-white">Name</TableHead>
+                      <TableHead className="text-white">Email</TableHead>
+                      <TableHead className="text-white">Total Spent</TableHead>
+                      <TableHead className="text-white">Visits</TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody>
@@ -435,7 +433,7 @@ export default function CreateCampaign({ customers, campaigns, setCampaigns }) {
           </Card>
         )}
 
-        <Button type="submit" className="w-full md:w-auto">
+        <Button type="submit" className="w-full md:w-auto text-black bg-white">
           Create Campaign
         </Button>
       </form>
