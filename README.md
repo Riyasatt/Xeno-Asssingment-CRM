@@ -138,7 +138,7 @@ A simplified, AI-integrated CRM platform built to segment customers, launch pers
 
 ```bash
 # Clone repo
-git clone [https://github.com/your-username/xeno-crm.git](https://github.com/Riyasatt/Xeno-Asssingment-CRM)
+git clone https://github.com/Riyasatt/Xeno-Asssingment-CRM
 cd Xeno-Asssingment-CRM
 
 # Backend Setup
